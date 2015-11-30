@@ -3,6 +3,7 @@ Collect i18n keys from sources
 
 ##Installation
 ````js
+//Gruntfile.js
 module.exports = function (grunt) {
     grunt.initConfig({
         i18nCollect: {
