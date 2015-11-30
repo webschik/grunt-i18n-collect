@@ -22,6 +22,8 @@ module.exports = function (grunt) {
             }
         }
     });
+    
+    grunt.loadNpmTasks('grunt-i18n-collect');
 
     //... your Grunt tasks
 };
