@@ -7,7 +7,9 @@ module.exports = function (grunt) {
             method: ''
         });
 
-        if (!options.method) {
+        var methodName = options.method;
+
+        if (!methodName) {
             grunt.log.warn('Method is not specified.');
             return false;
         }
@@ -26,16 +28,17 @@ module.exports = function (grunt) {
                 }
             }).forEach(function (filepath) {
                 var src;
-                var regExp = new RegExp(options.method + '\\(([^)]+)\\)', 'g');
                 var res;
+                var quotesPattern = '[\'"]';
+                var pattern = new RegExp(methodName + '\\(\\s*' + quotesPattern + '([^)]+)' + quotesPattern + '\\s*\\)', 'g');
 
                 try {
                     src = grunt.file.read(filepath);
                 } catch (e) {}
 
-                res = src && regExp.exec(src);
+                res = src && pattern.exec(src);
                 while (res) {
-                    var parts = res[1].replace(/^['`"]/, '').replace(/['`"]$/, '').split('.');
+                    var parts = res[1].trim().split('.');
                     var len = parts.length;
                     var root = values;
                     parts.some(function (part, i) {
@@ -52,7 +55,7 @@ module.exports = function (grunt) {
                         return false;
                     });
 
-                    res = regExp.exec(src);
+                    res = pattern.exec(src);
                 }
             });
 
