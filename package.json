@@ -1,6 +1,6 @@
 {
   "name": "grunt-i18n-collect",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Grunt task for collection of i18n keys from sources",
   "main": "tasks/i18nCollect.js",
   "repository": {
