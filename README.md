@@ -1,7 +1,12 @@
 # grunt-i18n-collect
 Collect i18n keys from sources
 
-##Installation
+## Installation
+
+`npm install grunt-i18n-collect --save-dev`
+
+## Usage
+
 ````js
 //Gruntfile.js
 module.exports = function (grunt) {
